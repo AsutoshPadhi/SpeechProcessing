@@ -65,10 +65,20 @@ void train(string filename)
     long long int max = *max_element(v.begin(), v.end());
 
     /* DC Shift */
-    // long long int avg = accumulate(v.begin(), v.end(), 0.0)/v.size();
-    // cout<<"avg = "<<avg<<endl;
+    long double dc_avg=0;
+    for(size_t i=0; i<100; i++)
+    {
+        dc_avg += v[i];
+    }
+    dc_avg = dc_avg/100;
+    cout<<"DC Shift ("<<filename<<") = "<<dc_avg<<endl;
+    for(size_t i=0; i<v.size(); i++)
+    {
+        v[i] -= dc_avg;
+    }
 
-    for(std::size_t i=0; i<v.size(); i++)
+    /* Normalize to bring the values in the range of 5000 to -5000 */
+    for(size_t i=0; i<v.size(); i++)
     {
         v[i] = (v[i]*5000)/max;
     }
