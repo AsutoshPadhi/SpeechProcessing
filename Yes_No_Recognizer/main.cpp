@@ -16,7 +16,7 @@ long double shortTermEnergy(long long int frame[100])
     return sum/100;
 }
 
-int zeroLevelCrossings(long long int frame[100])
+int zeroLevelCrossings(long long int frame[100])    /* Calculates the ZCR */
 {
     int cnt=0;
     for(int i=1; i<100; i++)
